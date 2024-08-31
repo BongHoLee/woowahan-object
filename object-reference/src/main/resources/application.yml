@@ -1,0 +1,24 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+  sql:
+    init:
+      mode: always
+      encoding: UTF-8
+  datasource:
+    url: jdbc:mysql://localhost:3306/food
+    username: cdc_admin
+    password: cdc_admin
+    hikari:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE

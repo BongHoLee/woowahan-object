@@ -1,0 +1,37 @@
+spring:
+  config:
+    activate:
+      on-profile: test
+  sql:
+    init:
+      mode: always
+      encoding: UTF-8
+      schema-locations: classpath:/schema-test.sql
+      data-locations: classpath:/data-test.sql
+
+  datasource:
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=false;MODE=MySQL
+
+  h2:
+    console:
+      enabled: true  # H2 콘솔 활성화 (필요 시)
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true # SQL 포맷팅
+        use_sql_comments: true # SQL 코멘트 사용
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    database: h2
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
